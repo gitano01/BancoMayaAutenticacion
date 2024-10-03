@@ -1,0 +1,30 @@
+spring:
+ application:
+  name: BancoMayaAutenticacion
+ datasource:
+  url: ${URL_DB}
+  username: ${USERNAME}
+  password: ${PASSWORD}
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  hikari:
+   maximum-pool-size: 10
+   minimum-idle: 2
+   idle-timeout: 30000
+   connection-timeout: 30000
+   max-lifetime: 600000
+  jpa:
+    hibernate:
+      ddl-auto: update  # or create, create-drop, validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect  # or MySQL8Dialect depending on your version
+
+
+server:
+ port: 8080
+ servlet:
+  context-path: /bancoMaya
+
+  
+   
