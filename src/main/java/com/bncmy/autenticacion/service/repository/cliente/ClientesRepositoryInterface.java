@@ -1,8 +1,10 @@
 package com.bncmy.autenticacion.service.repository.cliente;
 
 import com.bncmy.autenticacion.model.Clientes;
-import com.bncmy.autenticacion.service.repository.generic.GenericRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClientesRepositoryInterface  extends GenericRepository<Clientes,Long> {
+import java.util.Optional;
 
+public interface ClientesRepositoryInterface  extends JpaRepository<Clientes,Long> {
+     public Optional<Clientes> findById(Long id);
 }

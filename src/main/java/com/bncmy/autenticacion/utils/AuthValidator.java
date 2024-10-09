@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import com.bncmy.autenticacion.model.Usuarios;
+import com.bncmy.autenticacion.model.User;
 import com.bncmy.autenticacion.model.exception.ErrorNegocio;
 import com.bncmy.autenticacion.model.exception.RespuestaError;
 
@@ -18,7 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 @Component
 public class AuthValidator {
 		
-	public static ResponseEntity<?> validateRequest(HttpServletRequest request) throws Exception{
+	public ResponseEntity<?> validateRequest(HttpServletRequest request) throws Exception{
 		
 		ResponseEntity<?> response = null;
 		
@@ -41,11 +41,11 @@ public class AuthValidator {
 				.stream()
 				.collect(Collectors.toMap( h -> h, request::getHeader));
 		
-		if(!headers.containsKey("authorization")) {
+		if(!headers.containsKey("Authorization")) {
 			throw new ErrorNegocio(HttpStatus.BAD_REQUEST,"Operacion Fallida","Falta header de autorizacion");
 		}
 		
-		byte[] decodedBytes = Base64.getDecoder().decode(headers.get("authorization").replace("Basic ", "").trim());
+		byte[] decodedBytes = Base64.getDecoder().decode(headers.get("Authorization").replace("Basic ", "").trim());
 		
 		String extract = new String(decodedBytes);
 		String username = extract.substring(0, extract.indexOf(":"));
@@ -54,9 +54,9 @@ public class AuthValidator {
 		System.out.println(username);
 		System.out.println(password);
 		
-		Usuarios user = new Usuarios();
+		User user = new User();
 		user.setUsername(username);
-		user.setContrasenia(password);
+		user.setPassword(password);
 				
 		response = new ResponseEntity<>(user,HttpStatus.ACCEPTED);		
 		}catch(ErrorNegocio en) {

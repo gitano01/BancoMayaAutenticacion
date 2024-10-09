@@ -72,14 +72,10 @@
 			<artifactId>fusionauth-jwt</artifactId>
 			<version>5.2.0</version>
 		</dependency>
-		<!--		<dependency>-->
-		<!--    	 	<groupId>io.fusionauth</groupId>-->
-		<!--    		<artifactId>fusionauth-spring-security</artifactId>-->
-		<!--    		<version>1.0.2</version>-->
-		<!--		</dependency>-->
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
+    	 	<groupId>io.fusionauth</groupId>
+    		<artifactId>fusionauth-spring-security</artifactId>
+    		<version>1.0.2</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -28,7 +28,7 @@ public class RespuestaError {
 		this.description = status.getReasonPhrase();
 		this.businessMessage = businessMessage;
 		this.reasonPhrase = reasonPhrase;
-		this.uri = "http://sis.auth.gob.br/help";
+		this.uri = "https://sis.imss.gob.mx/help";
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 		this.timeStamp = dateFormat.format(new Date());
     }
